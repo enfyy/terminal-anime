@@ -44,11 +44,20 @@ class Crawler
   end
 
   def get_episode_count(doc)
-    doc.css('.hs-shows').children.first.attr('id')
+    doc.css('.hs-shows').children.first&.attr('id')
   end
 
   def get_latest_release_date(doc)
     doc.css('.hs-shows').children.first.css('.rls-date').first.content
+  end
+
+  def check_for_new_episode(show)
+    doc = get_html_doc(show_link(show.href))
+    current_ep = get_episode_count(doc)
+    if show.ep_count < current_ep.to_i
+      show.ep_count = current_ep.to_i
+      show.save!
+    end
   end
 
   ##
