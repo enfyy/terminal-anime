@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version:
+2.5.1
 
-Things you may want to cover:
+* Configuration:
+You need to have the the chromedriver installed correctly in order for the watir gem to work ||
+Navigate to directory and $ bundle install
 
-* Ruby version
+* Database creation:
+configure the config/database.yml || then
+$ rake db:create
 
-* System dependencies
+* Database initialization:
+$ rake db:migrate
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run the UI:
+navigate to the directory in your terminal || then:
+$ rake anime:ui
