@@ -1,5 +1,5 @@
 # TERMINAL ANIME 
-web crawlings things from horriblesubs.info
+web crawling things from horriblesubs.info
 
 <p align="center">
   <img src="https://i.gyazo.com/7c0807ab7e68a1faf827c56d7f7746bf.png">
