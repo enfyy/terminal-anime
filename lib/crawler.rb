@@ -1,4 +1,5 @@
 class Crawler
+  HEADLESS = true
   RES = [480,720,1080]
   URI = 'https://horriblesubs.info'
   EP_URI_EXT = '/api.php?method=getshows&type=show&mode=filter&'
@@ -22,9 +23,9 @@ class Crawler
       show = Show.find_by(hs_id: show_id)
       wl = Watchlist.find_by(show: show)
       unless show.nil? || wl.nil?
-        link = doc.css("##{ep_num}-#{wl.resolution_pref}").css('.hs-torrent-link')&.first.children.first.attr('href')
+        link = doc.css(".link-#{wl.resolution_pref}").css('.hs-torrent-link')&.first&.css('a')&.attr('href')
         if link.nil?
-          link = doc.css("##{ep_num}-#{wl.resolution_pref}").css('.hs-magnet-link')&.first.children.first.attr('href')
+          link = doc.css(".link-#{wl.resolution_pref}").css('.hs-magnet-link')&.first&.css('a')&.attr('href')
         end
         return link
       end
@@ -86,7 +87,7 @@ class Crawler
   # @return: parsed document
   ##
   def get_html_doc(url)
-    browser = Watir::Browser.new(:chrome, headless:true)
+    browser = Watir::Browser.new(:chrome, headless: HEADLESS)
     browser.goto(url)
     doc = Nokogiri::HTML.parse(browser.html)
     browser.close

@@ -58,7 +58,10 @@ namespace :anime do
       CLI::UI::Frame.divider('')
       Watchlist.all.each do |watch|
         unless watch.up_to_date?
-          link = c.get_torrent_link(watch.show.hs_id, watch.last_ep + 1)
+          link = nil
+          CLI::UI::Spinner.spin("Fetching torrent link of [#{watch.show.title}] ") do |spinner|
+            link = c.get_torrent_link(watch.show.hs_id, watch.last_ep + 1)
+          end
           puts "#{Paint[watch.show.title.ljust(max), '#ff005d']} || " +
                "#{Paint[(watch.last_ep + 1).to_s.ljust(7), '#8700ff']} || " +
                "#{Paint[link,'#00fff2']}"
