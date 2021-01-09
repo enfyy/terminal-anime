@@ -1,5 +1,7 @@
 # TERMINAL ANIME 
-web crawling things from horriblesubs.info
+this is oficially useless now since the website it crawled from is dead.
+
+web crawling things from horriblesubs.info (RIP)
 
 <p align="center">
   <img src="https://i.gyazo.com/7c0807ab7e68a1faf827c56d7f7746bf.png">
